@@ -1,7 +1,6 @@
 package ru.job4j.calculator;
 /**
  *CalculatorTest
- *
  *@author Svetlana Egorova (s.sosenkova@gmail.com)
  *@version $Id$
  *@since 0.1
@@ -15,9 +14,10 @@ public class CalculatorTest {
 	/**
 	 *Test add.
 	 */ @Test
-	public void whenAddOnePlusOneThenTwo(){
+	public void whenAddOnePlusOneThenTwo() {
 	 	Calculator calc = new Calculator();
-		calc.add(1D, 1D);double result = calc.getResult();
+		calc.add(1D, 1D);
+		double result = calc.getResult();
 		double expected = 2D;
 		assertThat(result, is(expected));
 	}
@@ -43,7 +43,6 @@ public class CalculatorTest {
 		double expected = 4D;
 		assertThat(result, is(expected));
 	}
-
 	/**
 	 *Test div.
 	 */ @Test
