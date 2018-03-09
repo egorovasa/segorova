@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 /**
- *ConverterTest
+ *ConverterTest.
  *@author Svetlana Egorova (s.sosenkova@gmail.com)
  *@version $Id$
  *@since 0.1
