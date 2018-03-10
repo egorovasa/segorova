@@ -17,4 +17,12 @@ public class MaxTest {
         int result = maxim.max(2, 1);
         assertThat(result, is(2));
     }
+    /**
+     *Test maxOfThree.
+     */ @Test
+    public void whenFirstLessSecondAndThird() {
+        Max maxim = new Max();
+        int result = maxim.maxOfThree(0, 3, 4);
+        assertThat(result, is(4));
+    }
 }

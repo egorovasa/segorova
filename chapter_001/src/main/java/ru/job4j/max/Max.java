@@ -7,6 +7,16 @@ package ru.job4j.max;
  */
 public class Max {
     /**
+     *Method maxOfThree.
+     *@param first The first number.
+     *@param second The second number.
+     *@param third The third number.
+     *@return Max of three numbers.
+     */
+    public int maxOfThree(int first, int second, int third) {
+        return this.max(this.max(first, second), third);
+    }
+    /**
      *Method max.
      *@param first The first number.
      *@param second The second number.
