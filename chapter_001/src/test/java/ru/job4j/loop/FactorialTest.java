@@ -4,13 +4,14 @@ package ru.job4j.loop;
  *@version $Id$
  *@since 0.1
  */
+
 import org.junit.Test;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class FactorialTest {
-    /**
-     *Test calc.
+    /**Test calc.
      */ @Test
     public void whenN5ThenFact120() {
         Factorial factorial = new Factorial();
@@ -18,4 +19,3 @@ public class FactorialTest {
         assertThat(result, is(120));
     }
 }
-

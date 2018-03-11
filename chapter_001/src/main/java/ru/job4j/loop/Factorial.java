@@ -1,6 +1,5 @@
 package ru.job4j.loop;
 /**Factorial.
- *
  *@author Svetlana Egorova (s.sosenkova@gmail.com)
  *@version $Id$
  *@since 0.1
@@ -8,8 +7,8 @@ package ru.job4j.loop;
 public class Factorial {
     /**
      *Method calc.
-     *@param n Just positive whole number.
-     *@return Factorial of number.
+     *@param n Positive whole number.
+     *@return Number factorial.
      */
     public int calc(int n) {
         int fact = 1;
