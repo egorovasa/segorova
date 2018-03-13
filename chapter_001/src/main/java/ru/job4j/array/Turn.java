@@ -8,7 +8,6 @@ package ru.job4j.array;
  *@since 0.1
  */
 public class Turn {
-
     public int[] back(int[] array) {
         int j;
         for (int i = 1; i <= array.length / 2; i++) {
