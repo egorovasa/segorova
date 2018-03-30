@@ -59,7 +59,7 @@ public class TrackerTest {
         Item[] result = new Item[1];
         result[0] = item;
         assertThat(tracker.findByName(item.getName()), is(result));
-    }    /**
+    }
     /**
      * Test delete.
      */ @Test
@@ -67,7 +67,21 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item firstItem = new Item("test1", "testDescription", 123L);
         Item secondItem = new Item("test2", "testDescription2", 1234L);
-        tracker.delete(secondItem.getId());
-        assertThat(tracker.findAll()[0], is(firstItem));
+        tracker.add(firstItem);
+        tracker.add(secondItem);
+        tracker.delete(firstItem.getId());
+        assertThat(tracker.findAll()[0], is(secondItem));
+    }
+    /**
+     * Test findAll.
+     */ @Test
+    public void whenAllThenArrayWithoutNull() {
+        Tracker tracker = new Tracker();
+        Item firstItem = new Item("test1", "testDescription", 123L);
+        Item secondItem = new Item("test2", "testDescription2", 1234L);
+        tracker.add(firstItem);
+        tracker.add(secondItem);
+        Item[] expected = {firstItem, secondItem};
+        assertThat(tracker.findAll(), is(expected));
     }
 }
