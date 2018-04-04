@@ -99,7 +99,8 @@ public class StartUI {
      */
     private void showItem() {
         System.out.println("------------ Все заявки --------------");
-        System.out.println("------------ Результат" + this.tracker.findAll() + "-----------");
+        System.out.println("------------ Результат-----------");
+        System.out.println(this.tracker.findAll());
     }
     /**
      * Метод реализует редактирование заявки в хранилище.
@@ -129,7 +130,8 @@ public class StartUI {
     private void findIdItem() {
         System.out.println("------------ Поиск заявки по id --------------");
         String id = this.input.ask("Введите id заявки, которую нужно найти.");
-        System.out.println("------------ Результат : " + this.tracker.findById(id) + "-----------");
+        System.out.println("------------ Результат : -----------");
+        System.out.println(this.tracker.findById(id));
     }
     /**
      * Метод реализует поиск заявок по имени.
@@ -137,7 +139,8 @@ public class StartUI {
     private void findNameItem() {
         System.out.println("------------ Поиск заявки по имени --------------");
         String name = this.input.ask("Введите имя заявки, которую нужно найти.");
-        System.out.println("------------ Результат : " + this.tracker.findByName(name) + "-----------");
+        System.out.println("------------ Результат : -----------");
+        System.out.println(this.tracker.findByName(name));
     }
     /**
      * Метод выводит меню.
