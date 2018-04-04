@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Tracker {
     /**
-     * Массив для хранение заявок.
+     * Массив для хранения заявок.
      */
     private Item[] items = new Item[100];
     /**
