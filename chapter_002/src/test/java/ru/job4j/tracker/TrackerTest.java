@@ -19,7 +19,7 @@ public class TrackerTest {
      */ @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("test1", "testDescription", 123L);
+        Item item = new Item("test1", "testDescription");
         tracker.add(item);
         assertThat(tracker.findAll()[0], is(item));
     }
@@ -28,11 +28,11 @@ public class TrackerTest {
      */ @Test
     public void whenReplaceNameThenReturnNewName() {
         Tracker tracker = new Tracker();
-        Item previous = new Item("test1", "testDescription", 123L);
+        Item previous = new Item("test1", "testDescription");
         // Добавляем заявку в трекер. Теперь объект проинициализирован id.
         tracker.add(previous);
         // Создаем новую заявку.
-        Item next = new Item("test2", "testDescription2", 1234L);
+        Item next = new Item("test2", "testDescription2");
         // Проставляем старый id из previous, который был сгенерирован выше.
         next.setId(previous.getId());
         // Обновляем заявку в трекере.
@@ -45,7 +45,7 @@ public class TrackerTest {
      */ @Test
     public void whenIdThenItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("test1", "testDescription", 123L);
+        Item item = new Item("test1", "testDescription");
         tracker.add(item);
         assertThat(tracker.findById(item.getId()).getName(), is("test1"));
     }
@@ -54,7 +54,7 @@ public class TrackerTest {
      */ @Test
     public void whenNameThenItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("test1", "testDescription", 123L);
+        Item item = new Item("test1", "testDescription");
         tracker.add(item);
         Item[] result = new Item[1];
         result[0] = item;
@@ -65,8 +65,8 @@ public class TrackerTest {
      */ @Test
     public void whenDeleteThenNull() {
         Tracker tracker = new Tracker();
-        Item firstItem = new Item("test1", "testDescription", 123L);
-        Item secondItem = new Item("test2", "testDescription2", 1234L);
+        Item firstItem = new Item("test1", "testDescription");
+        Item secondItem = new Item("test2", "testDescription2");
         tracker.add(firstItem);
         tracker.add(secondItem);
         tracker.delete(firstItem.getId());
@@ -77,8 +77,8 @@ public class TrackerTest {
      */ @Test
     public void whenAllThenArrayWithoutNull() {
         Tracker tracker = new Tracker();
-        Item firstItem = new Item("test1", "testDescription", 123L);
-        Item secondItem = new Item("test2", "testDescription2", 1234L);
+        Item firstItem = new Item("test1", "testDescription");
+        Item secondItem = new Item("test2", "testDescription2");
         tracker.add(firstItem);
         tracker.add(secondItem);
         Item[] expected = {firstItem, secondItem};

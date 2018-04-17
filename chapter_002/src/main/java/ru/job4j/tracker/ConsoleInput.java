@@ -15,8 +15,8 @@ public class ConsoleInput implements Input {
         System.out.print(question);
         return scanner.nextLine();
     }
-    public long ask1(String question) {
+/*    public long ask1(String question) {
         System.out.print(question);
         return scanner.nextLong();
-    }
+    }*/
 }

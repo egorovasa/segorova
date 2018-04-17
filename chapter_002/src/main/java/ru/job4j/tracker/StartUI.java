@@ -89,8 +89,7 @@ public class StartUI {
         System.out.println("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
-        long create = this.input.ask1("Введите создание заявки :");
-        Item item = new Item(name, desc, create);
+        Item item = new Item(name, desc);
         this.tracker.add(item);
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
@@ -110,8 +109,7 @@ public class StartUI {
         String id = this.input.ask("Введите id заявки, которую нужно отредактировать.");
         String name = this.input.ask("Введите новое имя заявки :");
         String desc = this.input.ask("Введите новое описание заявки :");
-        long create = this.input.ask1("Введите создание заявки :");
-        Item item = new Item(name, desc, create);
+        Item item = new Item(name, desc);
         this.tracker.replace(id, item);
         System.out.println("------------ Заявка отредактирована : " + item.getId() + "-----------");
     }
