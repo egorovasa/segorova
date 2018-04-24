@@ -86,6 +86,7 @@ public class Tracker {
             for (int i = 0; i < this.position; i++) {
                 if (this.items[i].getId().equals(id)) {
                     this.items[i] = item;
+                    this.items[i].setId(id);
                     break;
                 }
             }
@@ -119,7 +120,7 @@ public class Tracker {
         for (int i = 0; i < this.position; i++) {
             if (this.items[i] != null && this.items[i].getName().equals(key)) {
                 result[i] = this.items[i];
-                break;
+                result[i].setId(this.items[i].getId());
             }
         }
         return result;

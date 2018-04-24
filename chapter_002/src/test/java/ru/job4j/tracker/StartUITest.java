@@ -13,24 +13,52 @@ import static org.junit.Assert.assertThat;
  *
  */
 public class StartUITest {
+    /**
+     * Создали Tracker.
+     *
+     * Cоздали StubInput с последовательностью действий.
+     *
+     * Убедились, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+     *
+     */
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        Tracker tracker = new Tracker();     // создаём Tracker
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
-        new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
-        assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll()[0].getName(), is("test name"));
     }
+    /**
+     * Создали Tracker.
+     *
+     * Добавили в неё заявку.
+     *
+     * Создали StabInput с последовательностью действий.
+     *
+     * Создали StartUI и вызвали метод init().
+     *
+     * Проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+     *
+     */
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
-        // создаём Tracker
         Tracker tracker = new Tracker();
-        //Напрямую добавляем заявку
         Item item = tracker.add(new Item());
-        //создаём StubInput с последовательностью действий
-        Input input = new StubInput(new String[]{"1", item.getId(), "test name", "desc"});
-        // создаём StartUI и вызываем метод init()
+        Input input = new StubInput(new String[]{"2", item.getId(), "test name", "desc", "6"});
         new StartUI(input, tracker).init();
-        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(tracker.findById(item.getId()).getName(), is("test name"));
+    }
+
+    /**
+     * Тест проверяет удаление заявки.
+     */
+   @Test
+    public void whenDeleteItemThenLeftShift() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item());
+        Item item1 = tracker.add(new Item());
+        Input input = new StubInput(new String[]{"3", item.getId(), "6"});
+        new StartUI(input, tracker).init();
+       assertThat(tracker.findAll()[0].getName(), is(item1.getName()));
     }
 }

@@ -16,16 +16,19 @@ import static org.junit.Assert.assertThat;
 public class TrackerTest {
     /**
      * Test add.
-     */ @Test
+     */
+    @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription");
         tracker.add(item);
         assertThat(tracker.findAll()[0], is(item));
     }
+
     /**
      * Test replace.
-     */ @Test
+     */
+    @Test
     public void whenReplaceNameThenReturnNewName() {
         Tracker tracker = new Tracker();
         Item previous = new Item("test1", "testDescription");
@@ -40,18 +43,22 @@ public class TrackerTest {
         // Проверяем, что заявка с таким id имеет новые имя test2.
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
+
     /**
      * Test findById.
-     */ @Test
+     */
+    @Test
     public void whenIdThenItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription");
         tracker.add(item);
         assertThat(tracker.findById(item.getId()).getName(), is("test1"));
     }
+
     /**
      * Test findByName.
-     */ @Test
+     */
+    @Test
     public void whenNameThenItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription");
@@ -60,9 +67,11 @@ public class TrackerTest {
         result[0] = item;
         assertThat(tracker.findByName(item.getName()), is(result));
     }
+
     /**
      * Test delete.
-     */ @Test
+     */
+    @Test
     public void whenDeleteThenNull() {
         Tracker tracker = new Tracker();
         Item firstItem = new Item("test1", "testDescription");
@@ -72,9 +81,11 @@ public class TrackerTest {
         tracker.delete(firstItem.getId());
         assertThat(tracker.findAll()[0], is(secondItem));
     }
+
     /**
      * Test findAll.
-     */ @Test
+     */
+    @Test
     public void whenAllThenArrayWithoutNull() {
         Tracker tracker = new Tracker();
         Item firstItem = new Item("test1", "testDescription");
