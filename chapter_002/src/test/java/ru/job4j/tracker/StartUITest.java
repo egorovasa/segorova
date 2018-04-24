@@ -61,4 +61,8 @@ public class StartUITest {
         new StartUI(input, tracker).init();
        assertThat(tracker.findAll()[0].getName(), is(item1.getName()));
     }
+    @Test
+    public void whenShowAllThenAllItems() {
+
+    }
 }
