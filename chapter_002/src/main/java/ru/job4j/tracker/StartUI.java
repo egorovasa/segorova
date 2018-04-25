@@ -100,7 +100,7 @@ public class StartUI {
      */
     private void showItem() {
         System.out.println("------------ Все заявки --------------");
-        System.out.println("------------ Результат-----------");
+        System.out.println("------------ Результат :-----------");
         Item[] allItems = this.tracker.findAll();
         for (Item item : allItems) {
             if (item != null) {
