@@ -37,6 +37,7 @@ public class StartUI {
      * Константа для выхода из цикла.
      */
     private static final String EXIT = "6";
+    private int[] range = new int[] {0, 1, 2, 3, 4, 5};
     /**
      * Получение данных от пользователя.
      */
@@ -66,8 +67,8 @@ public class StartUI {
         menu.fillActions();
         do {
             menu.show();
-            int key = Integer.valueOf(input.ask("Select : "));
-            menu.select(key);
+            //int key = Integer.valueOf(input.ask("Select : "));
+            menu.select(input.ask("select", range));
         } while (!"6".equals(this.input.ask("Exit? (6) : ")));
         /*boolean exit = false;
         while (!exit) {
@@ -95,14 +96,14 @@ public class StartUI {
     /**
      * Метод реализует добавление новой заявки в хранилище.
      */
-    /*private void createItem() {
+    private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
         Item item = new Item(name, desc);
         this.tracker.add(item);
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
-    }*/
+    }
     /**
      * Метод печатает все заявки.
      */
@@ -175,6 +176,6 @@ public class StartUI {
         System.out.println("6. Exit Program");
     }
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
