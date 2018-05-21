@@ -33,7 +33,6 @@ public class StubInput implements Input {
     }
 
     public int ask(String question, int[] range) {
-       // throw new UnsupportedOperationException("Unsupported operation");
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for (int value : range) {

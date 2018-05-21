@@ -7,7 +7,6 @@ package ru.job4j.tracker;
  *
  * info печатает информацию о том, что наше событие должно делать.
  *
- *
  */
 public interface UserAction {
     int key();

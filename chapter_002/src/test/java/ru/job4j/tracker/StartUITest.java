@@ -31,7 +31,6 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(tracker.findAll()[0].getName(), is("test name"));
     }
-
     /**
      * Создали Tracker.
      * <p>
@@ -51,7 +50,6 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(item.getId()).getName(), is("test name"));
     }
-
     /**
      * Тест проверяет удаление заявки.
      */
@@ -77,7 +75,6 @@ public class StartUITest {
     public void backOutput() {
         System.setOut(this.stdout);
     }
-
     /**
      * Тест проверяет вывод всех заявок.
      */
@@ -91,31 +88,18 @@ public class StartUITest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("Меню." + "\r\n")
-                                .append("0. Add new Item" + "\r\n")
-                                .append("1. Show all items" + "\r\n")
-                                .append("2. Edit item" + "\r\n")
-                                .append("3. Delete item" + "\r\n")
-                                .append("4. Find item by Id" + "\r\n")
-                                .append("5. Find items by name" + "\r\n")
-                                .append("6. Exit Program" + "\r\n")
-                                .append("------------ Все заявки --------------" + "\r\n")
-                                .append("------------ Результат :-----------" + "\r\n")
-                                .append("ID: " + item.getId() + " Имя: " + item.getName() + " Описание: " + item.getDescription() + "\r\n")
-                                .append("Меню." + "\r\n")
-                                .append("0. Add new Item" + "\r\n")
-                                .append("1. Show all items" + "\r\n")
-                                .append("2. Edit item" + "\r\n")
-                                .append("3. Delete item" + "\r\n")
-                                .append("4. Find item by Id" + "\r\n")
-                                .append("5. Find items by name" + "\r\n")
-                                .append("6. Exit Program" + "\r\n")
+                                .append("0 : Add an item." + "\r\n")
+                                .append("1 : Show all items." + "\r\n")
+                                .append("2 : Edit item." + "\r\n")
+                                .append("3 : Delete an item." + "\r\n")
+                                .append("4 : Find an Item by ID." + "\r\n")
+                                .append("5 : Find items by name." + "\r\n")
+                                .append(item.getId() + ", " + item.getName() + ", " + item.getDescription() + "\r\n")
                                 .toString()
                 )
         );
         System.setOut(stdout);
     }
-
     /**
      * Тест проверяет нахождение заявки по id.
      */
@@ -129,31 +113,18 @@ public class StartUITest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("Меню." + "\r\n")
-                                .append("0. Add new Item" + "\r\n")
-                                .append("1. Show all items" + "\r\n")
-                                .append("2. Edit item" + "\r\n")
-                                .append("3. Delete item" + "\r\n")
-                                .append("4. Find item by Id" + "\r\n")
-                                .append("5. Find items by name" + "\r\n")
-                                .append("6. Exit Program" + "\r\n")
-                                .append("------------ Поиск заявки по id --------------" + "\r\n")
-                                .append("------------ Результат : -----------" + "\r\n")
-                                .append("ID заявки: " + item.getId() + " Имя заявки: " + item.getName() + " Описание: " + item.getDescription() + "\r\n")
-                                .append("Меню." + "\r\n")
-                                .append("0. Add new Item" + "\r\n")
-                                .append("1. Show all items" + "\r\n")
-                                .append("2. Edit item" + "\r\n")
-                                .append("3. Delete item" + "\r\n")
-                                .append("4. Find item by Id" + "\r\n")
-                                .append("5. Find items by name" + "\r\n")
-                                .append("6. Exit Program" + "\r\n")
+                                .append("0 : Add an item." + "\r\n")
+                                .append("1 : Show all items." + "\r\n")
+                                .append("2 : Edit item." + "\r\n")
+                                .append("3 : Delete an item." + "\r\n")
+                                .append("4 : Find an Item by ID." + "\r\n")
+                                .append("5 : Find items by name." + "\r\n")
+                                .append(item.getId() + ", " + item.getName() + ", " + item.getDescription() + "\r\n")
                                 .toString()
                 )
         );
         System.setOut(stdout);
     }
-
     /**
      * Тест проверяет поиск заявки по имени.
      */
@@ -167,26 +138,13 @@ public class StartUITest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("Меню." + "\r\n")
-                                .append("0. Add new Item" + "\r\n")
-                                .append("1. Show all items" + "\r\n")
-                                .append("2. Edit item" + "\r\n")
-                                .append("3. Delete item" + "\r\n")
-                                .append("4. Find item by Id" + "\r\n")
-                                .append("5. Find items by name" + "\r\n")
-                                .append("6. Exit Program" + "\r\n")
-                                .append("------------ Поиск заявки по имени --------------" + "\r\n")
-                                .append("------------ Результат : -----------" + "\r\n")
-                                .append("ID: " + item.getId() + " Имя: " + item.getName() + " Описание: " + item.getDescription() + "\r\n")
-                                .append("Меню." + "\r\n")
-                                .append("0. Add new Item" + "\r\n")
-                                .append("1. Show all items" + "\r\n")
-                                .append("2. Edit item" + "\r\n")
-                                .append("3. Delete item" + "\r\n")
-                                .append("4. Find item by Id" + "\r\n")
-                                .append("5. Find items by name" + "\r\n")
-                                .append("6. Exit Program" + "\r\n")
-                                .toString()
+                                .append("0 : Add an item." + "\r\n")
+                                .append("1 : Show all items." + "\r\n")
+                                .append("2 : Edit item." + "\r\n")
+                                .append("3 : Delete an item." + "\r\n")
+                                .append("4 : Find an Item by ID." + "\r\n")
+                                .append("5 : Find items by name." + "\r\n")
+                                .append(item.getId() + ", " + item.getName() + ", " + item.getDescription() + "\r\n")                                .toString()
                 )
         );
         System.setOut(stdout);

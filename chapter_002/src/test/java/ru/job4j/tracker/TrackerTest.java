@@ -24,7 +24,6 @@ public class TrackerTest {
         tracker.add(item);
         assertThat(tracker.findAll()[0], is(item));
     }
-
     /**
      * Test replace.
      */
@@ -43,7 +42,6 @@ public class TrackerTest {
         // Проверяем, что заявка с таким id имеет новые имя test2.
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
-
     /**
      * Test findById.
      */
@@ -54,7 +52,6 @@ public class TrackerTest {
         tracker.add(item);
         assertThat(tracker.findById(item.getId()).getName(), is("test1"));
     }
-
     /**
      * Test findByName.
      */
@@ -67,7 +64,6 @@ public class TrackerTest {
         result[0] = item;
         assertThat(tracker.findByName(item.getName()), is(result));
     }
-
     /**
      * Test delete.
      */
@@ -81,7 +77,6 @@ public class TrackerTest {
         tracker.delete(firstItem.getId());
         assertThat(tracker.findAll()[0], is(secondItem));
     }
-
     /**
      * Test findAll.
      */

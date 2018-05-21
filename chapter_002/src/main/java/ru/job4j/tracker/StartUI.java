@@ -62,50 +62,13 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
-        Tracker tracker = new Tracker();
-        MenuTracker menu = new MenuTracker(this.input, tracker);
+        //Tracker tracker = new Tracker();
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
         menu.fillActions();
-        /*UserAction deleteAction = new UserAction() {
-
-            public int key() {
-                return 3;
-            }
-
-            public void execute(Input inut, Tracker tracker) {
-            }
-
-            public String info() {
-                return "3. Delete";
-            }
-        };
-        menu.addAction(deleteAction);*/
         do {
             menu.show();
-            //int key = Integer.valueOf(input.ask("Select : "));
             menu.select(input.ask("select", range));
         } while (!"6".equals(this.input.ask("Exit? (6) : ")));
-        /*boolean exit = false;
-        while (!exit) {
-            this.showMenu();
-            String answer = this.input.ask("Выберите нужный пункт.");
-            if (ADD.equals(answer)) {
-                this.createItem();
-            } else if (SHOW.equals(answer)) {
-                this.showItem();
-            } else if (EDIT.equals(answer)) {
-                this.editItem();
-            } else if (DEL.equals(answer)) {
-                this.deleteItem();
-            } else if (FINDID.equals(answer)) {
-                this.findIdItem();
-            } else if (FINDNAME.equals(answer)) {
-                this.findNameItem();
-            } else if (EXIT.equals(answer)) {
-                exit = true;
-            } else {
-                exit = true;
-            }
-        }*/
     }
     /**
      * Метод реализует добавление новой заявки в хранилище.

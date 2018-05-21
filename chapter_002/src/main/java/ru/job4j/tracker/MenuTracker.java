@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import com.sun.xml.internal.rngom.parse.host.Base;
-
 /**
  * Внешний внутренний класс EditItem.
  */
@@ -49,7 +47,6 @@ public class MenuTracker {
         this.input = input;
         this.tracker = tracker;
     }
-
     /**
      * Метод fillActions, заполняет наши данные.
      */
@@ -61,10 +58,6 @@ public class MenuTracker {
         this.actions[position++] = new MenuTracker.FindItemById(4, "Find an Item by ID.");
         this.actions[position++] = new FindByName(5, "Find items by name.");
     }
-   /*
-    public void addAction(UserAction action) {
-        this.actions[position++] = action;
-    }*/
     /**
      * Метод, который будет выполнять наше действие, которое выбрал пользователь.
      * @param key действие, которое записано в наш массив.
@@ -89,9 +82,6 @@ public class MenuTracker {
         public AddItem(int key, String name) {
             super(key, name);
         }
-        /*public int key() {
-            return 0;
-        }*/
         @Override
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("Введите имя заявки : ");
