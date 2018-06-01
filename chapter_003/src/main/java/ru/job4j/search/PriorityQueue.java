@@ -26,7 +26,7 @@ class PriorityQueue {
                 if (task.getPriority() <= tasks.get(i).getPriority()) {
                 tasks.add(i, task);
                 } else {
-                    tasks.add(i + 1, task);
+                    tasks.add(tasks.size(), task);
                 }
             }
         }
