@@ -1,4 +1,4 @@
-package ru.job4j.CoffeeMachine;
+package ru.job4j.coffeemachine;
 
 class CoffeeMachine {
 

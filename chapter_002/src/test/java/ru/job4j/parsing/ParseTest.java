@@ -1,4 +1,4 @@
-package ru.job4j.Parsing;
+package ru.job4j.parsing;
 
 import org.junit.Test;
 import java.util.Stack;
