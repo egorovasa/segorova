@@ -12,34 +12,36 @@ import java.util.List;
  */
 class ConvertList2Array {
 
-    int[][] toArray(List<Integer> list, int rows) {
-
+    private int setSize(List<Integer> list, int rows) {
         int cells;
         if (list.size() % rows != 0) {
             cells = list.size() / rows + 1;
         } else {
             cells = list.size() / rows;
         }
+        return cells;
+    }
 
-        int[][] array = new int[rows][cells];
+    int[][] toArray(List<Integer> list, int rows) {
+        ConvertList2Array array = new ConvertList2Array();
+        int cells = array.setSize(list, rows);
+        int[][] convertedArray = new int[rows][cells];
         int k = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cells; j++) {
                 if (k < list.size()) {
-                    array[i][j] = list.get(k);
+                    convertedArray[i][j] = list.get(k);
                     k++;
-                } else {
-                    array[i][j] = 0;
                 }
             }
         }
-        return array;
+        return convertedArray;
     }
 
     List<Integer> convert(List<int[]> list) {
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            for (int j : list.get(i)) {
+        for (int[] ints : list) {
+            for (int j : ints) {
                 result.add(j);
             }
         }
