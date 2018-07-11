@@ -1,6 +1,9 @@
 package ru.job4j.parsing;
 
+import java.util.Arrays;
 import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
 /**Parse.
  *
  *@author Svetlana Egorova (s.sosenkova@gmail.com)
@@ -11,18 +14,27 @@ import java.util.Stack;
  */
 class Parse {
     private Stack<Character> stack = new Stack<>();
+    private List<Character> openingBrackets = Arrays.asList('(', '{', '[');
+    private List<Character> closingBrackets = Arrays.asList(')', '}', ']');
+
 
     private boolean isOpeningBracket(char bracket) {
-        return "({[".indexOf(bracket) != -1;
+        return openingBrackets.indexOf(bracket) != -1;
     }
 
     private boolean isClosingBracket(char bracket) {
-        return ")}]".indexOf(bracket) != -1;
+        return closingBrackets.indexOf(bracket) != -1;
     }
 
     private boolean isPair(char opening, char closing) {
-        return opening == '(' && closing == ')' || opening == '['
-                && closing == ']' || opening == '{' && closing == '}';
+        boolean k = false;
+        for (int i = 0; i < openingBrackets.size(); i++) {
+            if (opening == openingBrackets.get(i) && closing == closingBrackets.get(i)) {
+                k = true;
+                break;
+            }
+        }
+        return k;
     }
 
     boolean validate(String input) {
@@ -49,15 +61,11 @@ class Parse {
         Parse brackets = new Parse();
         if (brackets.validate(input)) {
             for (char c : input.toCharArray()) {
-                if (c == '[') {
+                for (int i = 0; i < openingBrackets.size(); i++) {
+                if (c == openingBrackets.get(i)) {
                     result.add(c);
-                    result.add(']');
-                } else if (c == '{') {
-                    result.add(c);
-                    result.add('}');
-                } else if (c == '(') {
-                    result.add(c);
-                    result.add(')');
+                    result.add(closingBrackets.get(i));
+                }
                 }
             }
         }
