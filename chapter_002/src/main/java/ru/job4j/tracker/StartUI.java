@@ -1,4 +1,8 @@
 package ru.job4j.tracker;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**StartUI.
  *
  * @author Svetlana Egorova (s.sosenkova@gmail.com).
@@ -54,14 +58,14 @@ public class StartUI {
      * @param tracker хранилище заявок.
      *
      */
-    public StartUI(Input input, Tracker tracker) {
+    StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
     /**
      * Основой цикл программы.
      */
-    public void init() {
+    void init() {
         //Tracker tracker = new Tracker();
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         menu.fillActions();
@@ -87,7 +91,7 @@ public class StartUI {
     private void showItem() {
         System.out.println("------------ Все заявки --------------");
         System.out.println("------------ Результат :-----------");
-        Item[] allItems = this.tracker.findAll();
+        List<Item> allItems = this.tracker.findAll();
         for (Item item : allItems) {
             if (item != null) {
             System.out.println("ID: " + item.getId() + " Имя: " + item.getName() + " Описание: " + item.getDescription());
@@ -132,7 +136,7 @@ public class StartUI {
         System.out.println("------------ Поиск заявки по имени --------------");
         String name = this.input.ask("Введите имя заявки, которую нужно найти.");
         System.out.println("------------ Результат : -----------");
-        Item[] allItems = this.tracker.findByName(name);
+        List<Item> allItems = this.tracker.findByName(name);
         for (Item item : allItems) {
             if (item != null) {
                 System.out.println("ID: " + item.getId() + " Имя: " + item.getName() + " Описание: " + item.getDescription());

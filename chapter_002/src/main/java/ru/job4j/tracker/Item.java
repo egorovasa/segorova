@@ -3,25 +3,21 @@ package ru.job4j.tracker;
 public class Item {
     private String id;
     public String name;
-    public String description;
-    /*public String create;
-    public String[] comments;*/
+    private String description;
 
-    public Item() {
+    Item() {
     }
-    public Item(String name, String description) {
+    Item(String name, String description) {
         this.name = name;
         this.description = description;
     }
-    public String getDescription() {
+    String getDescription() {
         return this.description;
     }
 
     public String getName() {
         return this.name; }
-    /*public String getCreate() {
-        return this.create;
-    }*/
+
     public void setId(String id) {
         this.id = id;
     }

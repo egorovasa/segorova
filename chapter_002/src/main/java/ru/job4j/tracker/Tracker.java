@@ -1,6 +1,8 @@
 package ru.job4j.tracker;
 
 import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 /**Tracker.
  *
  * @author Svetlana Egorova (s.sosenkova@gmail.com).
@@ -10,11 +12,12 @@ import java.util.*;
  * @since 0.1
  *
  */
-public class Tracker {
+class Tracker {
     /**
      * Массив для хранения заявок.
      */
-    private Item[] items = new Item[100];
+   //private Item[] items = new Item[100];
+   private ArrayList<Item> items = new ArrayList<>(100);
     /**
      * Указатель ячейки для новой заявки.
      */
@@ -29,9 +32,10 @@ public class Tracker {
      *
      * @return переданную заявку.
      */
-    public Item add(Item item) {
+    Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+        this.items.add(item);
+        this.position++;
         return item;
     }
     /**
@@ -41,7 +45,7 @@ public class Tracker {
      * @return Уникальный ключ.
      *
      */
-    String generateId() {
+    private String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
     /**
@@ -51,7 +55,7 @@ public class Tracker {
      *
      * @return Возвращает найденный Item. Если Item не найден - возвращает null.
      */
-    protected Item findById(String id) {
+    Item findById(String id) {
         Item result = null;
         for (Item item : items) {
             if (item != null && item.getId().equals(id)) {
@@ -67,11 +71,9 @@ public class Tracker {
      * @return Возвращает копию массива this.items без null элементов;
      *
      */
-    public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
+    List<Item> findAll() {
+        List<Item> result = new ArrayList<>();
+            result.addAll(this.items);
         return result;
     }
     /**
@@ -82,11 +84,11 @@ public class Tracker {
      * @param item На что необходимо заменить заявку.
      *
      */
-    public void replace(String id, Item item) {
+    void replace(String id, Item item) {
             for (int i = 0; i < this.position; i++) {
-                if (this.items[i].getId().equals(id)) {
-                    this.items[i] = item;
-                    this.items[i].setId(id);
+                if (this.items.get(i).getId().equals(id)) {
+                    this.items.set(i, item);
+                    this.items.get(i).setId(id);
                     break;
                 }
             }
@@ -97,16 +99,13 @@ public class Tracker {
      * @param id Идентификатор item-а.
      *
      */
-    public void delete(String id) {
-        int p = 0;
-        for (int k = 0; k < this.position; k++) {
-            if (this.items[k].getId().equals(id)) {
-                this.items[k] = null;
-                p = k;
+    void delete(String id) {
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
+                this.items.remove(item);
                 break;
             }
         }
-        System.arraycopy(this.items, p + 1, this.items, p, this.items.length - p - 1);
     }
     /**
      * Метод findByName. Получение списка по имени. Проверяет в цикле все элементы массива this.items, сравнивая name (используя метод getName класса Item) с аргументом метода String key. Элементы, у которых совпадает name, копирует в результирующий массив и возвращает его;
@@ -115,12 +114,12 @@ public class Tracker {
      *
      * @return item, с которым совпало имя.
      */
-    public Item[] findByName(String key) {
-        Item[] result = new Item[this.position];
-        for (int i = 0; i < this.position; i++) {
-            if (this.items[i] != null && this.items[i].getName().equals(key)) {
-                result[i] = this.items[i];
-                result[i].setId(this.items[i].getId());
+    List<Item> findByName(String key) {
+        ArrayList<Item> result = new ArrayList<>();
+        for (Item item : items) {
+            if (item != null && item.getName().equals(key)) {
+                result.add(item);
+                item.setId(item.getId());
             }
         }
         return result;
