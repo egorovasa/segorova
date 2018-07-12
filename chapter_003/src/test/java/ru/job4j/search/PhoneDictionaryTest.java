@@ -12,7 +12,8 @@ public class PhoneDictionaryTest {
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        List<Person> persons = phones.find("Petr");
+        String key = "Petr";
+        List<Person> persons = phones.find(key);
         assertThat(persons.iterator().next().getSurname(), is("Arsentev"));
     }
 }
