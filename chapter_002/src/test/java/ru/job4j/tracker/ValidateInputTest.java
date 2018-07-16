@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -34,7 +34,9 @@ public class ValidateInputTest {
         ValidateInput input = new ValidateInput(
                 new StubInput(new String[] {"invalid", "1"})
         );
-        input.ask("Enter", new int[] {1});
+        List<Integer> inp = new ArrayList<>();
+        inp.add(1);
+        input.ask("Enter", inp);
         assertThat(
                 this.mem.toString(),
                 is(

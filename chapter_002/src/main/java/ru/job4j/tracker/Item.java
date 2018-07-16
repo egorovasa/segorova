@@ -5,13 +5,13 @@ public class Item {
     public String name;
     private String description;
 
-    Item() {
+    public Item() {
     }
-    Item(String name, String description) {
+    public Item(String name, String description) {
         this.name = name;
         this.description = description;
     }
-    String getDescription() {
+    public String getDescription() {
         return this.description;
     }
 

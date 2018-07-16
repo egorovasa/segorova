@@ -12,7 +12,7 @@ import java.util.List;
  * @since 0.1
  *
  */
-class Tracker {
+public class Tracker {
     /**
      * Массив для хранения заявок.
      */
@@ -32,7 +32,7 @@ class Tracker {
      *
      * @return переданную заявку.
      */
-    Item add(Item item) {
+    public Item add(Item item) {
         item.setId(this.generateId());
         this.items.add(item);
         this.position++;
@@ -55,7 +55,7 @@ class Tracker {
      *
      * @return Возвращает найденный Item. Если Item не найден - возвращает null.
      */
-    Item findById(String id) {
+    protected Item findById(String id) {
         Item result = null;
         for (Item item : items) {
             if (item != null && item.getId().equals(id)) {
@@ -71,7 +71,7 @@ class Tracker {
      * @return Возвращает копию массива this.items без null элементов;
      *
      */
-    List<Item> findAll() {
+    public List<Item> findAll() {
         List<Item> result = new ArrayList<>();
             result.addAll(this.items);
         return result;
@@ -84,7 +84,7 @@ class Tracker {
      * @param item На что необходимо заменить заявку.
      *
      */
-    void replace(String id, Item item) {
+    public void replace(String id, Item item) {
             for (int i = 0; i < this.position; i++) {
                 if (this.items.get(i).getId().equals(id)) {
                     this.items.set(i, item);
@@ -99,7 +99,7 @@ class Tracker {
      * @param id Идентификатор item-а.
      *
      */
-    void delete(String id) {
+    public void delete(String id) {
         for (Item item : items) {
             if (item.getId().equals(id)) {
                 this.items.remove(item);
@@ -114,7 +114,7 @@ class Tracker {
      *
      * @return item, с которым совпало имя.
      */
-    List<Item> findByName(String key) {
+    public List<Item> findByName(String key) {
         ArrayList<Item> result = new ArrayList<>();
         for (Item item : items) {
             if (item != null && item.getName().equals(key)) {

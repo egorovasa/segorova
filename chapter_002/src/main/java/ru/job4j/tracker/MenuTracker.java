@@ -1,10 +1,11 @@
 package ru.job4j.tracker;
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Внешний внутренний класс EditItem.
  */
 class EditItem extends BaseAction {
-    EditItem(int key, String name) {
+    public EditItem(int key, String name) {
         super(key, name);
     }
     @Override
@@ -20,7 +21,7 @@ class EditItem extends BaseAction {
  * Внешний внутренний класс FindByName.
  */
 class FindByName extends BaseAction {
-    FindByName(int key, String name) {
+    public FindByName(int key, String name) {
         super(key, name);
     }
     @Override
@@ -37,35 +38,36 @@ class FindByName extends BaseAction {
 /**
  * UserAction - те действия, которые выполняет программа.
  */
-class MenuTracker {
+public class MenuTracker {
     private Input input;
     private Tracker tracker;
-    private UserAction[] actions = new UserAction[6];
+    private List<UserAction> actions = new ArrayList<>(7);
     private int position = 0;
-    MenuTracker(Input input, Tracker tracker) {
+    public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
     /**
      * Метод fillActions, заполняет наши данные.
      */
-    void fillActions() {
-        this.actions[position++] = this.new AddItem(0, "Add an item.");
-        this.actions[position++] = new MenuTracker.ShowItems(1, "Show all items.");
-        this.actions[position++] = new EditItem(2, "Edit item.");
-        this.actions[position++] = this.new DeleteItem(3, "Delete an item.");
-        this.actions[position++] = new MenuTracker.FindItemById(4, "Find an Item by ID.");
-        this.actions[position++] = new FindByName(5, "Find items by name.");
+    public void fillActions() {
+        this.actions.add(this.new AddItem(0, "Add an item."));
+        this.actions.add(new MenuTracker.ShowItems(1, "Show all items."));
+        this.actions.add(new EditItem(2, "Edit item."));
+        this.actions.add(this.new DeleteItem(3, "Delete an item."));
+        this.actions.add(new MenuTracker.FindItemById(4, "Find an Item by ID."));
+        this.actions.add(new FindByName(5, "Find items by name."));
+        this.actions.add(new FindByName(6, "Exit"));
     }
     /**
      * Метод, который будет выполнять наше действие, которое выбрал пользователь.
      * @param key действие, которое записано в наш массив.
      */
-    void select(int key) {
-        this.actions[key].execute(this.input, this.tracker);
+    public void select(int key) {
+        this.actions.get(key).execute(this.input, this.tracker);
     }
 
-    void show() {
+    public void show() {
         for (UserAction action : this.actions) {
             if (action != null) {
             System.out.println(action.info());
@@ -78,7 +80,7 @@ class MenuTracker {
      *
      */
     private  class AddItem extends BaseAction {
-        AddItem(int key, String name) {
+        public AddItem(int key, String name) {
             super(key, name);
         }
         @Override
@@ -96,7 +98,7 @@ class MenuTracker {
      *
      */
     private static class ShowItems extends BaseAction {
-        ShowItems(int key, String name) {
+        public ShowItems(int key, String name) {
             super(key, name);
         }
         @Override
@@ -112,7 +114,7 @@ class MenuTracker {
      * Внутренний не статический класс DeleteItem.
      */
     private  class DeleteItem extends BaseAction {
-        DeleteItem(int key, String name) {
+        public DeleteItem(int key, String name) {
             super(key, name);
         }
         @Override
@@ -125,7 +127,7 @@ class MenuTracker {
      * Внутренний статический класс FindItemById
      */
     private static class FindItemById extends BaseAction {
-        FindItemById(int key, String name) {
+        public FindItemById(int key, String name) {
             super(key, name);
         }
         @Override
