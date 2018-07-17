@@ -1,4 +1,8 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.model.Item;
+import ru.job4j.tracker.storage.Tracker;
+
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -42,7 +46,7 @@ public class MenuTracker {
     private Input input;
     private Tracker tracker;
     private List<UserAction> actions = new ArrayList<>(7);
-    private int position = 0;
+
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
@@ -57,7 +61,6 @@ public class MenuTracker {
         this.actions.add(this.new DeleteItem(3, "Delete an item."));
         this.actions.add(new MenuTracker.FindItemById(4, "Find an Item by ID."));
         this.actions.add(new FindByName(5, "Find items by name."));
-        this.actions.add(new FindByName(6, "Exit"));
     }
     /**
      * Метод, который будет выполнять наше действие, которое выбрал пользователь.

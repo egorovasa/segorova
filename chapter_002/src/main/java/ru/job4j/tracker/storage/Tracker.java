@@ -1,4 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.storage;
+
+import ru.job4j.tracker.model.Item;
 
 import java.util.*;
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public class Tracker {
      *
      * @return Возвращает найденный Item. Если Item не найден - возвращает null.
      */
-    protected Item findById(String id) {
+    public Item findById(String id) {
         Item result = null;
         for (Item item : items) {
             if (item != null && item.getId().equals(id)) {

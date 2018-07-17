@@ -1,4 +1,7 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.input;
+import ru.job4j.tracker.exceptions.MenuOutException;
+import ru.job4j.tracker.input.Input;
+
 import java.util.*;
 public class ValidateInput implements Input {
 
