@@ -4,7 +4,6 @@ import ru.job4j.tracker.action.MenuTracker;
 import ru.job4j.tracker.input.ConsoleInput;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.input.ValidateInput;
-import ru.job4j.tracker.model.Item;
 import ru.job4j.tracker.storage.Tracker;
 
 import java.util.Arrays;
@@ -27,6 +26,10 @@ public class StartUI {
      */
     private final Input input;
     /**
+     * Флажок для выхода.
+     */
+    private boolean working = true;
+    /**
      * Хранилище заявок.
      */
     private final Tracker tracker;
@@ -47,15 +50,14 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        boolean exit = false;
-        menu.fillActions();
-        while(!exit) {
+        menu.fillActions(this);
+        do {
             menu.show();
             menu.select(input.ask("Пожалуйста, выберите нужный пункт.", range));
-            if ("6".equals(this.input)) {
-                exit = true;
-            }
-        }
+        } while (this.working);
+    }
+    public void stop() {
+        this.working = false;
     }
 
     public static void main(String[] args) {

@@ -1,10 +1,31 @@
 package ru.job4j.tracker.action;
+import ru.job4j.tracker.StartUI;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.model.Item;
 import ru.job4j.tracker.storage.Tracker;
 
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Внешний внутренний класс Exit.
+ */
+class Exit implements UserAction {
+    private final StartUI ui;
+    Exit(StartUI ui) {
+        this.ui = ui;
+    }
+    public int key() {
+        return 6;
+    }
+    public String info() {
+        return "6 : Exit.";
+    }
+@Override
+public void execute(Input input, Tracker tracker) {
+        System.out.println("Время выходить. До свидания!");
+        this.ui.stop();
+    }
+}
 /**
  * Внешний внутренний класс EditItem.
  */
@@ -54,13 +75,14 @@ public class MenuTracker {
     /**
      * Метод fillActions, заполняет наши данные.
      */
-    public void fillActions() {
+    public void fillActions(StartUI ui) {
         this.actions.add(this.new AddItem(0, "Add an item."));
         this.actions.add(new MenuTracker.ShowItems(1, "Show all items."));
         this.actions.add(new EditItem(2, "Edit item."));
         this.actions.add(this.new DeleteItem(3, "Delete an item."));
         this.actions.add(new MenuTracker.FindItemById(4, "Find an Item by ID."));
         this.actions.add(new FindByName(5, "Find items by name."));
+        this.actions.add(new Exit(ui));
     }
     /**
      * Метод, который будет выполнять наше действие, которое выбрал пользователь.
