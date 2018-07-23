@@ -2,7 +2,7 @@ package ru.job4j.sorting;
 
 import java.util.*;
 
-public class SortUser implements Comparator<User> {
+public class SortUserByAge implements Comparator<User> {
 
     @Override
     public int compare(User user1, User user2) {

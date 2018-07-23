@@ -1,6 +1,6 @@
 package ru.job4j.sorting;
 
-class User implements Comparable<User> {
+public class User implements Comparable<User> {
 
     private String name;
     private Integer age;
@@ -13,12 +13,13 @@ class User implements Comparable<User> {
     String getName() {
         return name;
     }
+
     Integer getAge() {
         return age;
     }
 
     @Override
-    public int compareTo(User user){
+    public int compareTo(User user) {
         return age.compareTo(user.getAge());
     }
 }
