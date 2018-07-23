@@ -15,9 +15,9 @@ class CoffeeMachine {
         int[] result = new int[length];
         int j = 0;
             for (int i : values) {
-                while (change >= values[i]) {
-                    change = change - values[i];
-                    result[j] = values[i];
+                while (change >= i) {
+                    change = change - i;
+                    result[j] = i;
                     j++;
                 }
             }

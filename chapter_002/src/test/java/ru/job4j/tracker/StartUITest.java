@@ -11,16 +11,16 @@ import ru.job4j.tracker.storage.Tracker;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-/**StartUITest.
+
+/**
+ * StartUITest.
  *
  * @author Svetlana Egorova (s.sosenkova@gmail.com).
- *
  * @version $Id$
- *
  * @since 0.1
- *
  */
 public class StartUITest {
     /**
@@ -37,6 +37,7 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
+
     /**
      * Создали Tracker.
      * <p>
@@ -56,6 +57,7 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(item.getId()).getName(), is("test name"));
     }
+
     /**
      * Тест проверяет удаление заявки.
      */
@@ -81,6 +83,7 @@ public class StartUITest {
     public void backOutput() {
         System.setOut(this.stdout);
     }
+
     /**
      * Тест проверяет вывод всех заявок.
      */
@@ -94,27 +97,28 @@ public class StartUITest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("0 : Add an item." + "\r\n")
-                                .append("1 : Show all items." + "\r\n")
-                                .append("2 : Edit item." + "\r\n")
-                                .append("3 : Delete an item." + "\r\n")
-                                .append("4 : Find an Item by ID." + "\r\n")
-                                .append("5 : Find items by name." + "\r\n")
+                                .append("0 : Add an item." + System.lineSeparator())
+                                .append("1 : Show all items." + System.lineSeparator())
+                                .append("2 : Edit item." + System.lineSeparator())
+                                .append("3 : Delete an item." + System.lineSeparator())
+                                .append("4 : Find an Item by ID." + System.lineSeparator())
+                                .append("5 : Find items by name." + System.lineSeparator())
                                 .append("6 : Exit." + "\r\n")
                                 .append(item.getId() + ", " + item.getName() + ", " + item.getDescription() + "\r\n")
-                                .append("0 : Add an item." + "\r\n")
-                                .append("1 : Show all items." + "\r\n")
-                                .append("2 : Edit item." + "\r\n")
-                                .append("3 : Delete an item." + "\r\n")
-                                .append("4 : Find an Item by ID." + "\r\n")
-                                .append("5 : Find items by name." + "\r\n")
-                                .append("6 : Exit." + "\r\n")
-                                .append("Время выходить. До свидания!" + "\r\n")
+                                .append("0 : Add an item." + System.lineSeparator())
+                                .append("1 : Show all items." + System.lineSeparator())
+                                .append("2 : Edit item." + System.lineSeparator())
+                                .append("3 : Delete an item." + System.lineSeparator())
+                                .append("4 : Find an Item by ID." + System.lineSeparator())
+                                .append("5 : Find items by name." + System.lineSeparator())
+                                .append("6 : Exit." + System.lineSeparator())
+                                .append("Время выходить. До свидания!" + System.lineSeparator())
                                 .toString()
                 )
         );
         System.setOut(stdout);
     }
+
     /**
      * Тест проверяет нахождение заявки по id.
      */
@@ -128,27 +132,28 @@ public class StartUITest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("0 : Add an item." + "\r\n")
-                                .append("1 : Show all items." + "\r\n")
-                                .append("2 : Edit item." + "\r\n")
-                                .append("3 : Delete an item." + "\r\n")
-                                .append("4 : Find an Item by ID." + "\r\n")
-                                .append("5 : Find items by name." + "\r\n")
-                                .append("6 : Exit." + "\r\n")
+                                .append("0 : Add an item." + System.lineSeparator())
+                                .append("1 : Show all items." + System.lineSeparator())
+                                .append("2 : Edit item." + System.lineSeparator())
+                                .append("3 : Delete an item." + System.lineSeparator())
+                                .append("4 : Find an Item by ID." + System.lineSeparator())
+                                .append("5 : Find items by name." + System.lineSeparator())
+                                .append("6 : Exit." + System.lineSeparator())
                                 .append(item.getId() + ", " + item.getName() + ", " + item.getDescription() + "\r\n")
-                                .append("0 : Add an item." + "\r\n")
-                                .append("1 : Show all items." + "\r\n")
-                                .append("2 : Edit item." + "\r\n")
-                                .append("3 : Delete an item." + "\r\n")
-                                .append("4 : Find an Item by ID." + "\r\n")
-                                .append("5 : Find items by name." + "\r\n")
-                                .append("6 : Exit." + "\r\n")
-                                .append("Время выходить. До свидания!" + "\r\n")
+                                .append("0 : Add an item." + System.lineSeparator())
+                                .append("1 : Show all items." + System.lineSeparator())
+                                .append("2 : Edit item." + System.lineSeparator())
+                                .append("3 : Delete an item." + System.lineSeparator())
+                                .append("4 : Find an Item by ID." + System.lineSeparator())
+                                .append("5 : Find items by name." + System.lineSeparator())
+                                .append("6 : Exit." + System.lineSeparator())
+                                .append("Время выходить. До свидания!" + System.lineSeparator())
                                 .toString()
                 )
         );
         System.setOut(stdout);
     }
+
     /**
      * Тест проверяет поиск заявки по имени.
      */
@@ -162,22 +167,22 @@ public class StartUITest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("0 : Add an item." + "\r\n")
-                                .append("1 : Show all items." + "\r\n")
-                                .append("2 : Edit item." + "\r\n")
-                                .append("3 : Delete an item." + "\r\n")
-                                .append("4 : Find an Item by ID." + "\r\n")
-                                .append("5 : Find items by name." + "\r\n")
-                                .append("6 : Exit." + "\r\n")
-                                .append(item.getId() + ", " + item.getName() + ", " + item.getDescription() + "\r\n")
-                                .append("0 : Add an item." + "\r\n")
-                                .append("1 : Show all items." + "\r\n")
-                                .append("2 : Edit item." + "\r\n")
-                                .append("3 : Delete an item." + "\r\n")
-                                .append("4 : Find an Item by ID." + "\r\n")
-                                .append("5 : Find items by name." + "\r\n")
-                                .append("6 : Exit." + "\r\n")
-                                .append("Время выходить. До свидания!" + "\r\n")
+                                .append("0 : Add an item." + System.lineSeparator())
+                                .append("1 : Show all items." + System.lineSeparator())
+                                .append("2 : Edit item." + System.lineSeparator())
+                                .append("3 : Delete an item." + System.lineSeparator())
+                                .append("4 : Find an Item by ID." + System.lineSeparator())
+                                .append("5 : Find items by name." + System.lineSeparator())
+                                .append("6 : Exit." + System.lineSeparator())
+                                .append(item.getId() + ", " + item.getName() + ", " + item.getDescription() + System.lineSeparator())
+                                .append("0 : Add an item." + System.lineSeparator())
+                                .append("1 : Show all items." + System.lineSeparator())
+                                .append("2 : Edit item." + System.lineSeparator())
+                                .append("3 : Delete an item." + System.lineSeparator())
+                                .append("4 : Find an Item by ID." + System.lineSeparator())
+                                .append("5 : Find items by name." + System.lineSeparator())
+                                .append("6 : Exit." + System.lineSeparator())
+                                .append("Время выходить. До свидания!" + System.lineSeparator())
                                 .toString()
                 )
         );

@@ -9,18 +9,15 @@ import ru.job4j.tracker.storage.Tracker;
 import java.util.Arrays;
 import java.util.List;
 
-/**StartUI.
+/**
+ * StartUI.
  *
  * @author Svetlana Egorova (s.sosenkova@gmail.com).
- *
  * @version $Id$
- *
  * @since 0.1
- *
  */
 public class StartUI {
 
-    private List<Integer> range = Arrays.asList(0, 1, 2, 3, 4, 5, 6);
     /**
      * Получение данных от пользователя.
      */
@@ -33,18 +30,18 @@ public class StartUI {
      * Хранилище заявок.
      */
     private final Tracker tracker;
+
     /**
      * Конструктор, инициализирующий поля.
      *
-     * @param input ввод данных.
-     *
+     * @param input   ввод данных.
      * @param tracker хранилище заявок.
-     *
      */
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
+
     /**
      * Основой цикл программы.
      */
@@ -53,9 +50,10 @@ public class StartUI {
         menu.fillActions(this);
         do {
             menu.show();
-            menu.select(input.ask("Пожалуйста, выберите нужный пункт.", range));
+            menu.select(input.ask("Пожалуйста, выберите нужный пункт.", menu.range()));
         } while (this.working);
     }
+
     public void stop() {
         this.working = false;
     }
