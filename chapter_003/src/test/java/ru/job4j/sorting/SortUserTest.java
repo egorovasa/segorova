@@ -25,16 +25,20 @@ public class SortUserTest {
                         new User("Petr", 26)
                 ), is(4));
     }
-
     @Test
-    public void whenListOfUsersThenSortingUserByAllFieldsTreeSet() {
-        Comparator<User> pcomp = new SortUserByAlphabetName().thenComparing(new SortUserByAge());
-        TreeSet<User> users = new TreeSet(pcomp);
+    public void whenListOfUsersThenSortingUsersByNameLength() {
+        List<User> users = new ArrayList<>();
         users.add(new User("Svetlana", 27));
         users.add(new User("Petr", 26));
-        TreeSet<User> expected = new TreeSet<>();
-        expected.add(new User("Petr", 26));
-        expected.add(new User("Svetlana", 27));
-        assertThat(users, is(expected));
+        SortUser sortUsers = new SortUser();
+        assertThat(sortUsers.sortNameLength(users).get(0).getAge(), is(26));
+    }
+    @Test
+    public void whenListOfUsersThenSortingUsersByAllFields() {
+        List<User> users = new ArrayList<>();
+        users.add(new User("Svetlana", 27));
+        users.add(new User("Petr", 26));
+        SortUser sortUsers = new SortUser();
+        assertThat(sortUsers.sortNameLength(users).get(0).getName(), is("Petr"));
     }
 }
