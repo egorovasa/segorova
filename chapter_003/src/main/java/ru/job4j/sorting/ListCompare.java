@@ -13,8 +13,8 @@ public class ListCompare implements Comparator<String> {
         int len = leftWorld.length < rightWorld.length ? leftWorld.length : rightWorld.length;
 
         for (int i = 0; i < len; i++) {
-            if (leftWorld[i] != rightWorld[i]) {
-                rst = Character.compare(leftWorld[i], rightWorld[i]);
+            rst = Character.compare(leftWorld[i], rightWorld[i]);
+            if (rst != 0) {
                 break;
             }
         }
