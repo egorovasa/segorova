@@ -79,7 +79,6 @@ public class BankTest {
         Bank sberbank = new Bank();
         sberbank.addUser(user1);
         sberbank.addAccountToUser("123", account1);
-        Account account2 = new Account(4000, "789");
         assertThat(sberbank.getActualAccount(user1, account1), is(account1));
     }
 
@@ -97,6 +96,6 @@ public class BankTest {
         sberbank.addAccountToUser("123", account1);
         sberbank.addUser(user2);
         sberbank.addAccountToUser("321", account2);
-        assertThat(sberbank.transferMoney(user1, account1, user2, account2, 1000), is(true));
+        assertThat(sberbank.transferMoney("123", account1, "321", account2, 1000), is(true));
     }
 }

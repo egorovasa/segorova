@@ -101,14 +101,23 @@ public class Bank {
     /**
      * Метод transferMoney, для перевода денег между счетами двух пользователей.
      *
-     * @param srcUser    отправитель.
-     * @param srcAccount счёт отправителя.
-     * @param destUser   получатель.
-     * @param dstAccount счёт получателя.
-     * @param amount     сумма средств.
+     * @param srcPassport  номер паспорта отправителя.
+     * @param srcAccount   счёт отправителя.
+     * @param destPassport номер паспорта получателя.
+     * @param dstAccount   счёт получателя.
+     * @param amount       сумма средств.
      * @return исход операции.
      */
-    public boolean transferMoney(User srcUser, Account srcAccount, User destUser, Account dstAccount, double amount) {
+    public boolean transferMoney(String srcPassport, Account srcAccount, String destPassport, Account dstAccount, double amount) {
+        User srcUser = null;
+        User destUser = null;
+        for (Map.Entry<User, List<Account>> user : this.users.entrySet()) {
+            if (user.getKey().getPassport().equals(srcPassport)) {
+                srcUser = user.getKey();
+            } else if (user.getKey().getPassport().equals(destPassport)) {
+                destUser = user.getKey();
+            }
+        }
         return this.users.get(srcUser).contains(srcAccount)
                 && this.users.get(destUser).contains(dstAccount)
                 && getActualAccount(srcUser, srcAccount).transferOfOwnFunds(getActualAccount(destUser, dstAccount), amount);
