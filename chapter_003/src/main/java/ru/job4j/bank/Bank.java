@@ -1,6 +1,5 @@
 package ru.job4j.bank;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -11,7 +10,7 @@ import java.util.*;
  * @since 0.1
  */
 public class Bank {
-    private TreeMap<User, List<Account>> users = new TreeMap<>();
+    private Map<User, List<Account>> users = new HashMap<>();
 
     /**
      * Метод addUser добавляет пользователя.
@@ -48,7 +47,7 @@ public class Bank {
     public void addAccountToUser(String passport, Account account) {
         for (Map.Entry<User, List<Account>> user : this.users.entrySet()) {
             if (user.getKey().getPassport().equals(passport)) {
-                this.users.get(user).add(account);
+                this.users.get(user.getKey()).add(account);
             }
         }
     }
@@ -56,21 +55,31 @@ public class Bank {
     /**
      * Метод deleteAccountFromUser удаляет счёт из списка счетов пользователя.
      *
-     * @param user    пользователь.
-     * @param account счёт пользователя.
+     * @param passport номер паспорта пользователя.
+     * @param account  счёт пользователя.
      */
-    public void deleteAccountFromUser(User user, Account account) {
-        this.users.get(user).remove(account);
+    public void deleteAccountFromUser(String passport, Account account) {
+        for (Map.Entry<User, List<Account>> user : this.users.entrySet()) {
+            if (user.getKey().getPassport().equals(passport)) {
+                this.users.get(user.getKey()).remove(account);
+            }
+        }
     }
 
     /**
      * Метод getUserAccounts возвращает список счетов пользователя.
      *
-     * @param user пользователь.
+     * @param passport номер паспорта пользователя.
      * @return список счетов пользователя.
      */
-    public List<Account> getUserAccounts(User user) {
-        return this.users.get(user);
+    public List<Account> getUserAccounts(String passport) {
+        List<Account> accounts = new ArrayList<>();
+        for (Map.Entry<User, List<Account>> user : this.users.entrySet()) {
+            if (user.getKey().getPassport().equals(passport)) {
+                accounts = this.users.get(user.getKey());
+            }
+        }
+        return accounts;
     }
 
     /**
@@ -80,9 +89,13 @@ public class Bank {
      * @param account его счёт.
      * @return актуальный счёт.
      */
-    private Account getActualAccount(User user, Account account) {
+    public Account getActualAccount(User user, Account account) {
+        Account account1 = null;
         List<Account> list = this.users.get(user);
-        return list.get(list.indexOf(account));
+        if (list.indexOf(account) != -1) {
+            account1 = list.get(list.indexOf(account));
+        }
+        return account1;
     }
 
     /**
