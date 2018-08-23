@@ -1,6 +1,6 @@
 package ru.job4j.sorting.departments;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class DepartmentsBook {
 
