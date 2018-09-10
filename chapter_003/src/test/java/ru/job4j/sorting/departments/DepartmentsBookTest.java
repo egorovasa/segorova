@@ -55,6 +55,7 @@ public class DepartmentsBookTest {
                 "K1\\SK1\\SSK2",
                 "K1\\SK1\\SSK1"};
         DepartmentsBook book1 = new DepartmentsBook();
+        book1.parse(departments);
         assertThat(book1.sortDepartmentsInDescending(departments), is(sortedMassive));
     }
 }
