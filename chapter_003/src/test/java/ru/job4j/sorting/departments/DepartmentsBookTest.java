@@ -9,15 +9,12 @@ public class DepartmentsBookTest {
     @Test
     public void whenDepartmentsSortedInAscendingOrderThenSortedArray() {
         String[] departments = {
-                "K1\\SK1",
                 "K1\\SK2",
-                "K1",
                 "K1\\SK1\\SSK1",
                 "K1\\SK1\\SSK2",
                 "K2\\SK1\\SSK1",
                 "K2\\SK1\\SSK2",
-                "K2\\SK1",
-                "K2"};
+        };
         String[] sortedMassive = {
                 "K1",
                 "K1\\SK1",
@@ -29,21 +26,18 @@ public class DepartmentsBookTest {
                 "K2\\SK1\\SSK1",
                 "K2\\SK1\\SSK2"};
         DepartmentsBook book1 = new DepartmentsBook();
-        assertThat(book1.sortDepartmentsInAscending(departments), is(sortedMassive));
+        String[] actual = book1.sortDepartmentsInAscending(departments);
+        assertThat(actual, is(sortedMassive));
     }
 
     @Test
     public void whenDepartmentsSortedInDescendingOrderThenSortedArray() {
         String[] departments = {
-                "K1\\SK1",
                 "K1\\SK2",
-                "K1",
                 "K1\\SK1\\SSK1",
                 "K1\\SK1\\SSK2",
-                "K2",
                 "K2\\SK1\\SSK1",
-                "K2\\SK1\\SSK2",
-                "K2\\SK1"};
+                "K2\\SK1\\SSK2"};
         String[] sortedMassive = {
                 "K2",
                 "K2\\SK1",
@@ -55,7 +49,8 @@ public class DepartmentsBookTest {
                 "K1\\SK1\\SSK2",
                 "K1\\SK1\\SSK1"};
         DepartmentsBook book1 = new DepartmentsBook();
-        book1.parse(departments);
-        assertThat(book1.sortDepartmentsInDescending(departments), is(sortedMassive));
+        String[] actual = book1.parse(departments);
+        actual = book1.sortDepartmentsInDescending(actual);
+        assertThat(actual, is(sortedMassive));
     }
 }

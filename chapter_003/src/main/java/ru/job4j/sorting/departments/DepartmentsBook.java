@@ -5,8 +5,7 @@ import java.util.*;
 public class DepartmentsBook {
 
     public String[] sortDepartmentsInAscending(String[] array) {
-        Arrays.sort(array, new DepartmentComparatorInAscending());
-        return array;
+        return parse(array);
     }
 
     public String[] sortDepartmentsInDescending(String[] array) {
