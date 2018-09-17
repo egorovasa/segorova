@@ -8,7 +8,7 @@ public class MyBiFunction {
 
     final double k = 2.0;
 
-    List<Double> diapasonWithBiFunction(double start, double end, BiFunction<Double, Double, Double> func) {
+    List<Double> diapason(double start, double end, BiFunction<Double, Double, Double> func) {
         List<Double> result = new ArrayList<>();
         for (; start <= end; start++) {
             result.add(func.apply(start, k));
