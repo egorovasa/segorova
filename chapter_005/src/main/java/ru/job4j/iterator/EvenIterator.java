@@ -27,14 +27,12 @@ public class EvenIterator implements Iterator {
 
     @Override
     public Integer next() {
+        int element = 0;
         if (i > size) {
             throw new NoSuchElementException();
-        }
-        int element = 0;
-        while (hasNext()) {
+        } else if (hasNext()) {
             element = numbers[i];
             i++;
-            break;
         }
         return element;
     }
