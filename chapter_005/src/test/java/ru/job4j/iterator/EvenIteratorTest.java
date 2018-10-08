@@ -19,7 +19,7 @@ public class EvenIteratorTest {
         it = new EvenIterator(new int[]{1, 2, 3, 4, 5, 6, 7});
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void shouldReturnEvenNumbersSequentially() {
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(2));

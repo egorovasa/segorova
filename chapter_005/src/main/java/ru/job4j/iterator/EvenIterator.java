@@ -31,26 +31,11 @@ public class EvenIterator implements Iterator {
             throw new NoSuchElementException();
         }
         int element = 0;
-        for (; i < size; i++) {
-            if (numbers[i] % 2 == 0) {
-                element = numbers[i];
-                i++;
-                break;
-            }
+        while (hasNext()) {
+            element = numbers[i];
+            i++;
+            break;
         }
         return element;
-    }
-
-    public static void main(String[] args) {
-        EvenIterator it = new EvenIterator(new int[]{4, 2, 1, 1});
-        System.out.println(it.hasNext());
-        System.out.println(it.next());
-        System.out.println(it.hasNext());
-        System.out.println(it.next());
-        System.out.println(it.hasNext());
-        System.out.println(it.next());
-        System.out.println(it.hasNext());
-        System.out.println(it.next());
-        System.out.println(it.hasNext());
     }
 }
