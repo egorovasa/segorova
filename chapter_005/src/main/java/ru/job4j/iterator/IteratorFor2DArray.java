@@ -7,19 +7,9 @@ public class IteratorFor2DArray implements Iterator {
 
     private int point = 0;
     private int[][] data;
-    private int size;
 
     public IteratorFor2DArray(int[][] data) {
         this.data = data;
-        this.size = countElements(data);
-    }
-
-    private int countElements(int[][] matrix) {
-        int count = 0;
-        for (int[] row : matrix) {
-            count += row.length;
-        }
-        return count;
     }
 
     @Override
@@ -38,6 +28,10 @@ public class IteratorFor2DArray implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return point != size;
+        int count = 0;
+        for (int[] row : data) {
+            count += row.length;
+        }
+        return point != count;
     }
 }
