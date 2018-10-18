@@ -5,8 +5,8 @@ import java.util.NoSuchElementException;
 
 public class IteratorFor2DArray implements Iterator {
 
-    private int point = 0;
     private int[][] data;
+    private int i, j;
 
     public IteratorFor2DArray(int[][] data) {
         this.data = data;
@@ -14,24 +14,20 @@ public class IteratorFor2DArray implements Iterator {
 
     @Override
     public Integer next() {
-        int nextPoint = 0;
-        for (int[] innerArray : data) {
-            for (int cell : innerArray) {
-                if (nextPoint++ == point) {
-                    point++;
-                    return cell;
-                }
-            }
+        if (!hasNext()) {
+            throw new NoSuchElementException();
         }
-        throw new NoSuchElementException();
+        int element = data[i][j];
+        j++;
+        while (i < data.length && j >= data[i].length) {
+            j = 0;
+            i++;
+        }
+        return element;
     }
 
     @Override
     public boolean hasNext() {
-        int count = 0;
-        for (int[] row : data) {
-            count += row.length;
-        }
-        return point != count;
+        return (i < data.length && j < data[i].length);
     }
 }
