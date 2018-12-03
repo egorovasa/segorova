@@ -20,7 +20,7 @@ public class ConverterTest {
         Iterator<Integer> it2 = Arrays.asList(4, 5, 6).iterator();
         Iterator<Integer> it3 = Arrays.asList(7, 8, 9).iterator();
         Iterator<Iterator<Integer>> its = Arrays.asList(it1, it2, it3).iterator();
-      Converter IteratorOfIterators = new Converter();
+        Converter IteratorOfIterators = new Converter();
         it = IteratorOfIterators.convert(its);
     }
 
@@ -81,7 +81,7 @@ public class ConverterTest {
         Iterator<Integer> it2 = (new ArrayList<Integer>()).iterator();
         Iterator<Integer> it3 = (new ArrayList<Integer>()).iterator();
         Iterator<Iterator<Integer>> its = Arrays.asList(it1, it2, it3).iterator();
-       Converter IteratorOfIterators = new Converter();
+        Converter IteratorOfIterators = new Converter();
         it = IteratorOfIterators.convert(its);
         assertThat(it.hasNext(), is(false));
     }
