@@ -4,9 +4,8 @@ import java.util.*;
 
 public class SimpleArray<T> implements Iterable<T> {
 
-    Object[] objects;
-    int index = 0;
-    private int i;
+    private Object[] objects;
+    private int index = 0;
 
     public SimpleArray(int size) {
         this.objects = new Object[size];
@@ -42,6 +41,9 @@ public class SimpleArray<T> implements Iterable<T> {
      * @param model указанный элемент.
      */
     public void set(int index, T model) {
+        if (index > this.objects.length) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
         this.objects[index] = model;
     }
 
@@ -51,6 +53,9 @@ public class SimpleArray<T> implements Iterable<T> {
      * @param index индекс.
      */
     public void delete(int index) {
+        if (index > this.objects.length) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
         System.arraycopy(this.objects, index + 1, this.objects, index, this.objects.length - index - 1);
         this.objects[this.objects.length - 1] = null;
     }
@@ -63,9 +68,11 @@ public class SimpleArray<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
+            private int i = 0;
+
             @Override
             public boolean hasNext() {
-                return i < objects.length;
+                return this.i < index;
             }
 
             @Override
@@ -73,11 +80,7 @@ public class SimpleArray<T> implements Iterable<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                T element = (T) objects[i];
-                if (i < objects.length) {
-                    i++;
-                }
-                return element;
+                return (T) objects[this.i++];
             }
         };
     }
