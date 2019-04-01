@@ -37,7 +37,8 @@ public class AbstractStoreTest {
         abstractArray.add(user2);
         abstractArray.add(user3);
         user4 = new User("Fourth person");
-        assertThat(abstractArray.replace("First person", user4), is(true));
+        abstractArray.replace("First person", user4);
+        assertThat(abstractArray.findById("Fourth person"), is(user4));
     }
 
     @Test

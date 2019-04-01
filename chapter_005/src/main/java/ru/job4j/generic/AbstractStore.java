@@ -24,15 +24,15 @@ public class AbstractStore<T extends Base> implements Store<T> {
 
     @Override
     public boolean replace(String id, T model) {
-        for (T value : data) {
-            if (value.getId().equals(id)) {
-                value = model;
-                return true;
-            } else {
-                return false;
+        boolean answer = false;
+        for (int i = 0; i < count; i++) {
+            if (this.data.get(i).getId().equals(id)) {
+                this.data.set(i, model);
+                answer = true;
+                break;
             }
         }
-        return false;
+        return answer;
     }
 
     @Override
