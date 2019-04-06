@@ -31,7 +31,8 @@ public class SimpleArrayListTest {
     @Test
     public void whenDeleteThenOtherFirstElement() {
         list.delete();
-        assertThat(list.get(0), is(2));
-        assertThat(list.getSize(), is(2));
+        assertThat(list.delete(), is(2));
+        assertThat(list.get(0), is(1));
+        assertThat(list.getSize(), is(1));
     }
 }

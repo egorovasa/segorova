@@ -22,14 +22,15 @@ public class SimpleArrayList<E> {
     /**
      * Реализовать метод удаления первого элемент в списке.
      */
-    public boolean delete() {
+    public E delete() {
         if (this.first != null) {
             Node<E> result = this.first;
+            Node<E> result2 = this.first;
             this.first = result.next;
             this.size--;
-            return true;
+            return result2.date;
         }
-        return false;
+        return null;
     }
 
     /**
