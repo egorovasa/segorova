@@ -3,7 +3,6 @@ package ru.job4j.list;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 public class DynamicContainer<E> implements Iterable<E> {
 
