@@ -23,7 +23,10 @@ public class DynamicContainer<E> implements Iterable<E> {
     }
 
     public E get(int index) {
-        return (E) this.container[index];
+        if (index < this.container.length) {
+            return (E) this.container[index];
+        }
+        return null;
     }
 
     public int getSize() {
@@ -38,7 +41,7 @@ public class DynamicContainer<E> implements Iterable<E> {
 
             @Override
             public boolean hasNext() {
-                return i < container.length;
+                return i < container.length && container[i] != null;
             }
 
             @Override
