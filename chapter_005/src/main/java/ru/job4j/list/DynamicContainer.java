@@ -19,12 +19,12 @@ public class DynamicContainer<E> implements Iterable<E> {
             throw new ArrayIndexOutOfBoundsException();
         }
         this.container[index++] = date;
+        modCount++;
     }
 
     public void getSpace() {
         if (index == this.container.length) {
             this.container = Arrays.copyOf(this.container, 2 * this.container.length);
-            modCount++;
         }
     }
 
