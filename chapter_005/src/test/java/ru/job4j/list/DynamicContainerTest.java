@@ -21,13 +21,10 @@ public class DynamicContainerTest {
 
     @Test
     public void whenAddElementsThenNewBiggerContainer() {
+        container.getSpace();
         container.add(4);
         assertThat(container.get(3), is(4));
         assertThat(container.getSize(), is(6));
-    }
-
-    @Test
-    public void get() throws Exception {
     }
 
     @Test

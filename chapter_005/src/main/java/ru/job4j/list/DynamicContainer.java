@@ -16,10 +16,16 @@ public class DynamicContainer<E> implements Iterable<E> {
 
     public void add(E date) {
         if (index == this.container.length) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        this.container[index++] = date;
+    }
+
+    public void getSpace() {
+        if (index == this.container.length) {
             this.container = Arrays.copyOf(this.container, 2 * this.container.length);
             modCount++;
         }
-        this.container[index++] = date;
     }
 
     public E get(int index) {
@@ -41,7 +47,7 @@ public class DynamicContainer<E> implements Iterable<E> {
 
             @Override
             public boolean hasNext() {
-                return i < container.length && container[i] != null;
+                return i < index;
             }
 
             @Override
