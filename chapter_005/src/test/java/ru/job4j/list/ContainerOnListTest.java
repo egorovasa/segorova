@@ -33,11 +33,11 @@ public class ContainerOnListTest {
     public void iterator() {
         Iterator<Integer> it = list.iterator();
         assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(5));
+        assertThat(it.next(), is(7));
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(6));
         assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(7));
+        assertThat(it.next(), is(5));
         assertThat(it.hasNext(), is(false));
     }
 }

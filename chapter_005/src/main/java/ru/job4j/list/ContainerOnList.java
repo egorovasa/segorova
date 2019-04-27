@@ -48,7 +48,7 @@ public class ContainerOnList<E> implements Iterable<E> {
                     throw new ConcurrentModificationException();
                 }
                 currentNode = currentNode.next;
-                return (E) result;
+                return result.date;
             }
         };
     }
