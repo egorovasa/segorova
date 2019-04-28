@@ -2,6 +2,7 @@ package ru.job4j.list;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ContainerOnList<E> implements Iterable<E> {
 
@@ -9,8 +10,8 @@ public class ContainerOnList<E> implements Iterable<E> {
     private Node<E> first;
     private int modCount;
 
-    public void add(E date) {
-        Node<E> newLink = new Node<>(date);
+    public void add(E data) {
+        Node<E> newLink = new Node<>(data);
         newLink.next = this.first;
         this.first = newLink;
         this.size++;
@@ -22,7 +23,7 @@ public class ContainerOnList<E> implements Iterable<E> {
         for (int i = 0; i < index; i++) {
             result = result.next;
         }
-        return result.date;
+        return result.data;
     }
 
     public int getSize() {
@@ -46,20 +47,22 @@ public class ContainerOnList<E> implements Iterable<E> {
                 Node<E> result = currentNode;
                 if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
+                } else if (!hasNext()) {
+                    throw new NoSuchElementException();
                 }
                 currentNode = currentNode.next;
-                return result.date;
+                return result.data;
             }
         };
     }
 
     private static class Node<E> {
 
-        E date;
+        E data;
         Node<E> next;
 
-        Node(E date) {
-            this.date = date;
+        Node(E data) {
+            this.data = data;
         }
     }
 }
