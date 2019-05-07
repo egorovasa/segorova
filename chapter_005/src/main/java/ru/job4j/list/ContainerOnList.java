@@ -29,6 +29,11 @@ public class ContainerOnList<E> implements Iterable<E> {
     public int getSize() {
         return this.size;
     }
+    public E delete() {
+        E result = first != null ? this.first.data : null;
+        this.first = this.first != null && this.first.next != null ? this.first.next : null;
+        return result;
+    }
 
     @Override
     public Iterator<E> iterator() {
