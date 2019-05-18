@@ -14,11 +14,11 @@ public class DynamicContainer<E> implements Iterable<E> {
         this.container = new Object[size];
     }
 
-    public void add(E date) {
+    public void add(E data) {
         if (index == this.container.length) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        this.container[index++] = date;
+        this.container[index++] = data;
         modCount++;
     }
 
