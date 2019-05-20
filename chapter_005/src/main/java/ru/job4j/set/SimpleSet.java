@@ -9,14 +9,7 @@ public class SimpleSet<E> {
     private DynamicContainer<E> set = new DynamicContainer<>(5);
 
     public void add(E data) {
-        boolean result = true;
-        for (E e : set) {
-            if (data == e) {
-                result = false;
-                break;
-            }
-        }
-        if (result) {
+        if (set.contains(data)) {
             set.add(data);
         }
     }

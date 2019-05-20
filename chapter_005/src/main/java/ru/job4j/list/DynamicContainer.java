@@ -59,4 +59,15 @@ public class DynamicContainer<E> implements Iterable<E> {
             }
         };
     }
+
+    public boolean contains(E data) {
+        boolean result = true;
+        for (int i = 0; i < index; i++) {
+            if (data == container[i]) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
 }
