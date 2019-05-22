@@ -20,14 +20,12 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
 
         User user = (User) o;
-
-        if (children != user.children) return false;
-        return name.equals(user.name) && birthday.equals(user.birthday);
+        return children == user.children && name.equals(user.name) && birthday.equals(user.birthday);
     }
 
-/*    @Override
+    @Override
     public int hashCode() {
         int result = (name != null ? name.hashCode() : 0) + (birthday != null ? birthday.hashCode() : 0);
         return 31 * result + children;
-    }*/
+    }
 }
