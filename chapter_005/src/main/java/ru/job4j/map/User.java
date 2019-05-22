@@ -13,4 +13,10 @@ public class User {
         this.children = children;
         this.birthday = birthday;
     }
+
+    @Override
+    public int hashCode() {
+        int result = (name != null ? name.hashCode() : 0) + (birthday != null ? birthday.hashCode() : 0);
+        return 31 * result + children;
+    }
 }
