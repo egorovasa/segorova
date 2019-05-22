@@ -15,8 +15,19 @@ public class User {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (children != user.children) return false;
+        return name.equals(user.name) && birthday.equals(user.birthday);
+    }
+
+/*    @Override
     public int hashCode() {
         int result = (name != null ? name.hashCode() : 0) + (birthday != null ? birthday.hashCode() : 0);
         return 31 * result + children;
-    }
+    }*/
 }
