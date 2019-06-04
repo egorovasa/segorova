@@ -29,7 +29,6 @@ public class HashMap<K, V> implements Iterable<V> {
     private static class Entry<K, V> {
         K key;
         V value;
-        Entry next;
 
         public Entry(K myKey, V myValue) {
             key = myKey;
@@ -97,7 +96,6 @@ public class HashMap<K, V> implements Iterable<V> {
             if (e.key.equals(key)) {
                 return (V) e.value;
             }
-            e = e.next;
         }
         return null;
     }
