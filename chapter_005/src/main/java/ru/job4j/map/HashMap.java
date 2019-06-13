@@ -12,7 +12,6 @@ import java.util.*;
 public class HashMap<K, V> implements Iterable<V> {
 
     private Entry table[];
-    private Entry first;
     private int index = 0;
     private int modCount;
 
@@ -56,6 +55,10 @@ public class HashMap<K, V> implements Iterable<V> {
         return index;
     }
 
+    public int getIndex(K key) {
+        return key.hashCode();
+    }
+
     /**
      * Метод insert нужен для вставки элемента в структуру.
      *
@@ -64,22 +67,17 @@ public class HashMap<K, V> implements Iterable<V> {
      * @return true или false, в зависимости от того, удалось добавить объект в структуру или нет.
      */
     public boolean insert(K key, V value) {
-        int hash = key.hashCode() % this.table.length;
-        Entry e = table[hash];
-
-        if (e != null) {
-            if (e.key.equals(key)) {
-                e.value = value;
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            table[hash] = new Entry(key, value);
+        int newIndex = getIndex(key);
+        Entry e = table[newIndex];
+        boolean rst = false;
+        if (e == null) {
+            table[newIndex] = new Entry(key, value);
             index++;
             modCount++;
-            return true;
+            getSpace();
+            rst = true;
         }
+        return rst;
     }
 
     /**
@@ -89,10 +87,10 @@ public class HashMap<K, V> implements Iterable<V> {
      * @return непосредственно значение, value нашего объекта.
      */
     public V get(K key) {
-        int hash = key.hashCode() % this.table.length;
-        Entry e = table[hash];
+        int newIndex = getIndex(key);
+        Entry e = table[newIndex];
 
-        while (e != null) {
+        if (e != null) {
             if (e.key.equals(key)) {
                 return (V) e.value;
             }
@@ -108,10 +106,11 @@ public class HashMap<K, V> implements Iterable<V> {
      */
     public boolean delete(K key) {
         boolean rst = false;
-        Entry<K, V> element = table[key.hashCode() % table.length];
-        if (element != null) {
+        int Index = getIndex(key);
+        Entry<K, V> element = table[Index];
+        if (element != null && key.equals(element.key)) {
             rst = true;
-            table[key.hashCode() % table.length] = null;
+            table[Index] = null;
             index--;
             modCount--;
         }
@@ -123,15 +122,14 @@ public class HashMap<K, V> implements Iterable<V> {
      */
 
     public void getSpace() {
-        Entry newTable[] = new Entry[this.table.length * 2];
         if (index == this.table.length) {
+            Entry newTable[] = new Entry[this.table.length * 2];
             for (Entry element : this.table) {
                 if (element != null) {
-                    int newHash = element.getKey().hashCode() % newTable.length;
-                    newTable[newHash] = element;
+                    newTable[getIndex((K) element.key)] = element;
                 }
             }
-            this.table = Arrays.copyOf(newTable, newTable.length);
+            this.table = newTable;
         }
     }
 
@@ -139,27 +137,31 @@ public class HashMap<K, V> implements Iterable<V> {
     public Iterator<V> iterator() {
         return new Iterator<V>() {
 
-            private int expectedModCount = modCount;
-            private int count = 0;
+            int expectedModCount = modCount;
+            int count = 0;
 
             @Override
             public boolean hasNext() {
+                if (modCount != expectedModCount) {
+                    throw new ConcurrentModificationException();
+                }
                 boolean rst = false;
                 int nextCount = count;
                 while (nextCount < index) {
                     if (table[nextCount] != null) {
                         rst = true;
+                        count = nextCount;
                         break;
                     }
-                    count = nextCount;
+                    nextCount++;
                 }
                 return rst;
             }
 
             @Override
             public V next() {
-                if (modCount != expectedModCount) {
-                    throw new ConcurrentModificationException();
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
                 }
                 return (V) table[count++].value;
             }

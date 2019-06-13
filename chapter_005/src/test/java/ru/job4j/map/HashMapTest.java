@@ -14,33 +14,37 @@ public class HashMapTest {
     @Before
     public void beforeTest() {
         myHashMap = new HashMap<>(3);
+        myHashMap.insert(0, "Test 0");
         myHashMap.insert(1, "Test 1");
-        myHashMap.insert(2, "Test 2");
     }
 
     @Test
     public void whenInsertElementThenSizeBecomesBigger() {
+        myHashMap.insert(2, "Test 2");
         myHashMap.insert(3, "Test 3");
-        myHashMap.getSpace();
-        myHashMap.insert(4, "Test 4");
+/*        assertThat(myHashMap.insert(1, "Test 1"), is(true));
+        assertThat(myHashMap.insert(2, "Test 2"), is(true));
+        assertThat(myHashMap.insert(3, "Test 3"), is(true));*/
+        assertThat(myHashMap.get(0), is("Test 0"));
+        assertThat(myHashMap.get(1), is("Test 1"));
+        assertThat(myHashMap.get(2), is("Test 2"));
         assertThat(myHashMap.get(3), is("Test 3"));
-        assertThat(myHashMap.get(4), is("Test 4"));
     }
 
     @Test
     public void whenDeleteAnElementThenSizeBecomesLess() {
-        myHashMap.delete(2);
+        myHashMap.delete(1);
         assertThat(myHashMap.getSize(), is(1));
-        assertThat(myHashMap.delete(1), is(true));
+        assertThat(myHashMap.delete(0), is(true));
     }
 
     @Test
     public void whenIteratorThenFineEnumeration() {
         Iterator<String> it = myHashMap.iterator();
         assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is("Test 1"));
+        assertThat(it.next(), is("Test 0"));
         assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is("Test 2"));
+        assertThat(it.next(), is("Test 1"));
         assertThat(it.hasNext(), is(false));
     }
 }
