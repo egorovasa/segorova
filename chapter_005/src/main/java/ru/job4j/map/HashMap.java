@@ -76,6 +76,11 @@ public class HashMap<K, V> implements Iterable<V> {
             modCount++;
             getSpace();
             rst = true;
+        } else {
+            if (e.key.equals(key)) {
+                e.value = value;
+                return true;
+            }
         }
         return rst;
     }

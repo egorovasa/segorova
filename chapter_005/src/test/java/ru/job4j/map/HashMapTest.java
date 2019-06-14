@@ -22,9 +22,6 @@ public class HashMapTest {
     public void whenInsertElementThenSizeBecomesBigger() {
         myHashMap.insert(2, "Test 2");
         myHashMap.insert(3, "Test 3");
-/*        assertThat(myHashMap.insert(1, "Test 1"), is(true));
-        assertThat(myHashMap.insert(2, "Test 2"), is(true));
-        assertThat(myHashMap.insert(3, "Test 3"), is(true));*/
         assertThat(myHashMap.get(0), is("Test 0"));
         assertThat(myHashMap.get(1), is("Test 1"));
         assertThat(myHashMap.get(2), is("Test 2"));
