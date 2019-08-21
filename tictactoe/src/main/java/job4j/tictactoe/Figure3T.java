@@ -26,4 +26,5 @@ public class Figure3T extends Rectangle {
     public boolean hasMarkO() {
         return this.markO;
     }
+
 }
