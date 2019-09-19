@@ -44,12 +44,12 @@ public class MyTree<E extends Comparable<E>> implements SimpleTree<E> {
             System.out.println("Такой элемент уже есть.");
             return false;
         }
+
         if (!findBy(parent).isPresent()) {
             System.out.println("Такого родителя нет.");
             return false;
         }
         Node<E> parentIn = findBy(parent).get();
-        List<Node<E>> listChild = parentIn.children;
         Node<E> children = new Node<>(child);
         parentIn.children.add(children);
         modCount++;
@@ -61,33 +61,15 @@ public class MyTree<E extends Comparable<E>> implements SimpleTree<E> {
     public Iterator<E> iterator() {
 
         return new Iterator<E>() {
-            private ArrayList<Node<E>> arrayList = new ArrayList<>();
-
-            {
-                arrayList.add(root);
-            }
-
-            private int index = 0;
+            private Queue<Node<E>> nodeQueue = new LinkedList<>(Arrays.asList(root));
             private int modIter = modCount;
 
             @Override
             public boolean hasNext() {
-                boolean rst = false;
                 if (modIter != modCount) {
                     throw new ConcurrentModificationException("Размер дерева был увеличен.");
                 }
-                if (index == arrayList.size()) {
-                    ArrayList<Node<E>> array = new ArrayList<>();
-                    for (Node<E> node : arrayList) {
-                        array.addAll(node.children);
-                    }
-                    arrayList = array;
-                    index = 0;
-                }
-                if (index <= arrayList.size()) {
-                    rst = true;
-                }
-                return rst;
+                return !nodeQueue.isEmpty();
             }
 
             @Override
@@ -95,7 +77,9 @@ public class MyTree<E extends Comparable<E>> implements SimpleTree<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return arrayList.get(index++).value;
+                Node<E> res = this.nodeQueue.poll();
+                nodeQueue.addAll(res.leaves());
+                return res.value;
             }
         };
     }

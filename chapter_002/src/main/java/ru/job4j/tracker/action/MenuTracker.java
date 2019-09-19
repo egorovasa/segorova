@@ -27,7 +27,7 @@ class Exit implements UserAction {
         return "6 : Exit.";
     }
 
-    @Override
+
     public void execute(Input input, Tracker tracker) {
         System.out.println("Время выходить. До свидания!");
         this.ui.stop();
@@ -42,7 +42,7 @@ class EditItem extends BaseAction {
         super(key, name);
     }
 
-    @Override
+
     public void execute(Input input, Tracker tracker) {
         String id = input.ask("Please, enter the task's id : ");
         if (tracker.findById(id) != null) {
@@ -66,7 +66,7 @@ class FindByName extends BaseAction {
         super(key, name);
     }
 
-    @Override
+
     public void execute(Input input, Tracker tracker) {
         String name = input.ask("Введите имя заявки, которую нужно найти.");
         List<Item> allItems = tracker.findByName(name);
@@ -142,7 +142,7 @@ public class MenuTracker {
             super(key, name);
         }
 
-        @Override
+
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("Введите имя заявки : ");
             String desc = input.ask("Введите описание заявки : ");
@@ -160,7 +160,7 @@ public class MenuTracker {
             super(key, name);
         }
 
-        @Override
+
         public void execute(Input input, Tracker tracker) {
             for (Item item : tracker.findAll()) {
                 if (item != null) {
@@ -178,7 +178,7 @@ public class MenuTracker {
             super(key, name);
         }
 
-        @Override
+
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Введите id заявки, которую следует удалить.");
             if (tracker.delete(id)) {
@@ -197,7 +197,7 @@ public class MenuTracker {
             super(key, name);
         }
 
-        @Override
+
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Введите id заявки, которую нужно найти.");
             Item item = tracker.findById(id);
