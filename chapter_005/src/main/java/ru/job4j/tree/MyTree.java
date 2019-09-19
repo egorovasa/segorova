@@ -57,14 +57,12 @@ public class MyTree<E extends Comparable<E>> implements SimpleTree<E> {
     }
 
 
-    @Override
     public Iterator<E> iterator() {
 
         return new Iterator<E>() {
             private Queue<Node<E>> nodeQueue = new LinkedList<>(Arrays.asList(root));
             private int modIter = modCount;
 
-            @Override
             public boolean hasNext() {
                 if (modIter != modCount) {
                     throw new ConcurrentModificationException("Размер дерева был увеличен.");
@@ -72,7 +70,7 @@ public class MyTree<E extends Comparable<E>> implements SimpleTree<E> {
                 return !nodeQueue.isEmpty();
             }
 
-            @Override
+
             public E next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
@@ -81,6 +79,29 @@ public class MyTree<E extends Comparable<E>> implements SimpleTree<E> {
                 nodeQueue.addAll(res.leaves());
                 return res.value;
             }
+
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
         };
+    }
+
+    public boolean isBinary() {
+        boolean rst = true;
+        Queue<Node<E>> isTreeBinary = new LinkedList<>();
+        isTreeBinary.offer(root);
+        while (!isTreeBinary.isEmpty()) {
+            Node<E> element = isTreeBinary.poll();
+            int count = 0;
+            for (Node<E> child : element.leaves()) {
+                isTreeBinary.offer(child);
+                count++;
+            }
+            if (count > 2) {
+                rst = false;
+                break;
+            }
+        }
+        return rst;
     }
 }
